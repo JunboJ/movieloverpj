@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" conte nt="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-xm-3 col-sm-3 col-md-3 col-lg-3">
+
+        </div>
+
+        <div class="col-xm-3 col-sm-3 col-md-3 col-lg-3">
+
+        </div>
+
+        <div class="col-xm-3 col-sm-3 col-md-3 col-lg-3">
+
+        </div>
+
+        <div class="col-xm-3 col-sm-3 col-md-3 col-lg-3">
+
+        </div>
+    </div>
+</body>
+</html>
+
+SELECT DISTINCT area FROM (SELECT s.session, ta.areaID, ta.area, t.theaterID, s.sessionID, s.movieID, s.seats 
+                        FROM theater_area ta 
+                        inner join theaters t ON ta.areaID = t.areaID 
+                        inner join sessions s ON s.theaterID = t.theaterID 
+                        ORDER BY s.session) AS areatb
+
+    <div class="modal fade" data-backdrop="false" id="bookticketform" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    Choose your theater:
+                    <input type="text" name="area">
+                </form>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        choose area
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <?php 
+                        foreach ($area_row as $area) {
+                            echo "<a class='dropdown-item' href='#'>".$area."</a>";
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="asdfp()">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>

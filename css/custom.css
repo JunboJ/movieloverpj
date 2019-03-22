@@ -1,0 +1,24 @@
+nav a {
+    color: white;
+}
+
+nav {
+    position: fixed;
+    z-index: 10;
+}
+
+.modal.fade {
+    z-index: 1050;
+}
+/* .dropdown {
+    position: relative;
+    z-index: 10;
+}
+nav button {
+    position: relative;
+    z-index: 10;
+}
+nav #navdrop {
+    position: relative;
+    z-index: 10;
+} */
