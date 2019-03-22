@@ -157,10 +157,19 @@ function vbtn() {
 //     $('#areabtn_name').text(str);
 // });
 
-window.onload = getareaDropitem();
+// window.onload = getareaDropitem();
+var currentSid = "";
 
 function getareDropitem() {
-
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(xmlhttp);
+            document.getElementById("areadrop").innerHTML = xmlhttp.response;
+        }
+    };
+    xmlhttp.open("GET", "bookingform_onload.php", true);
+    xmlhttp.send();
 }
 function bookdrop1(areaid, val) {
     // alert(val);
@@ -197,6 +206,7 @@ function bookdrop2(mid, tid, val) {
 
 function bookdrop3(sid, val) {
     // alert(str);
+    currentSid = sid
     document.getElementById("sessionbtntext").innerHTML = val;
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -237,9 +247,9 @@ function cleanSeats () {
 }
 
 function bookthisticket () {
-    var area = document.getElementById("areabtntext").textContent;
+    // var area = document.getElementById("areabtntext").textContent;
     var theaterName = document.getElementById("theaterbtntext").textContent;
-    var session = document.getElementById("sessionbtntext").textContent;
+    // var session = document.getElementById("sessionbtntext").textContent;
     var seats = document.getElementById("seatbtntext").textContent;
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -248,6 +258,6 @@ function bookthisticket () {
             
         }
     };
-    xmlhttp.open("GET", "bookthisticket.php?ar="+area+"&tn="+theaterName+"&se="+session+"&seat="+seats, true);
+    xmlhttp.open("GET", "bookthisticket.php?tn="+theaterName+"&seid="+currentSid+"&seat="+seats, true);
     xmlhttp.send();
 }
