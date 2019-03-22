@@ -159,6 +159,7 @@ function vbtn() {
 
 // window.onload = getareaDropitem();
 var currentSid = "";
+var currentSes = "";
 
 function getareDropitem() {
     var xmlhttp = new XMLHttpRequest();
@@ -206,7 +207,9 @@ function bookdrop2(mid, tid, val) {
 
 function bookdrop3(sid, val) {
     // alert(str);
-    currentSid = sid
+    currentSid = sid;
+    currentSes = val;
+
     document.getElementById("sessionbtntext").innerHTML = val;
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -258,6 +261,7 @@ function bookthisticket () {
             
         }
     };
-    xmlhttp.open("GET", "bookthisticket.php?tn="+theaterName+"&seid="+currentSid+"&seat="+seats, true);
+    xmlhttp.open("GET", "bookthisticket.php?tn="+theaterName+"&se="+currentSes+"&seid="+currentSid+"&seat="+seats, true);
     xmlhttp.send();
 }
+

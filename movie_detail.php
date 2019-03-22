@@ -48,10 +48,10 @@
     <?php
         session_start();
 
-        $_SESSION['movieID'] = 4;
-        $_SESSION['userID'] = 2;
-        $movieID = $_SESSION['movieID'];
-        $userID = $_SESSION['userID'];
+        // $_SESSION['movieID'] = 4;
+        // $_SESSION['userid'] = 2;
+        $movieID = $_SESSION['movieid'];
+        $userID = $_SESSION['userid'];
 
         include 'connection.php';
         

@@ -49,6 +49,9 @@
     <div class="row text-center">
         <div>
             <?php
+            session_start();
+            $_SESSION['userid'] = 1;
+
             include 'connection.php';
             
             // for showing movie info
@@ -66,8 +69,8 @@
 
                     //layout in one col -poster
                     $imgpath = 'img/';
-                    echo "<div class='text-center posterunit'>";
-                    echo '<img src='.$imgpath.$row[$a][2].'> <br>';
+                    echo "<div class='text-center posterunit' onclick='gotomoviedetail(".$row[$a][0].")'>";
+                    echo '<img src='.$imgpath.$row[$a][2].' onclick="gotomoviedetail('.$row[$a][0].')"> <br>';
                     echo "</div>";
 
                     //layout in one col -title
@@ -85,13 +88,17 @@
 
                     //add to list btn
                     echo "<div class='btnset text-center'>";
-                    echo "<button class = 'btn btn-default' id = 'atl_btn_".$row[$a][0]."'></button>";
-                    echo "<button type='button' class='btn btn-default' data-toggle='modal' data-target='#bookticketform' onclick='getareDropitem();'>Book Ticket</button>";
+                    // echo "<button class = 'btn btn-default' id = 'atl_btn_".$row[$a][0]."'></button>";
+                    // echo "<button type='button' class='btn btn-default' data-toggle='modal' data-target='#bookticketform' onclick='getareDropitem();'>Book Ticket</button>";
                     echo "</div><br>";
 
                     echo "</div>";//a3
 
                     echo "</div>";//a2
+
+                    function gotomoviedetail ($mid) {
+                        $_SESSION['movieid'] = $mid;
+                    };
 
                 }
             ?>
